@@ -9,7 +9,9 @@ const els=document.querySelectorAll('.sh,.whos,.specs,.mec,.vals,.olist,.offices
 els.forEach(e=>e.classList.add('rv'));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),
 {rootMargin:'0px 0px -6% 0px'});els.forEach(e=>io.observe(e));
-document.querySelectorAll('.more-b').forEach(btn=>btn.addEventListener('click',()=>{const bio=btn.previousElementSibling;
-const o=bio.classList.toggle('open');btn.textContent=o?'Zwiń':'Czytaj więcej'}));
+document.querySelectorAll('.more-b').forEach(btn=>{const bio=btn.previousElementSibling;
+if(bio.scrollHeight<=bio.clientHeight+4){bio.classList.remove('clamp');btn.hidden=true;return}
+btn.addEventListener('click',()=>{const o=bio.classList.toggle('open');btn.textContent=o?'Zwiń':'Czytaj więcej';
+btn.setAttribute('aria-expanded',o);if(!o)btn.closest('.mem').scrollIntoView({block:'nearest',behavior:'smooth'})})});
 const f=document.getElementById('form');f&&f.addEventListener('submit',e=>{e.preventDefault();
 if(!f.reportValidity())return;f.querySelector('.form-msg').hidden=false;f.reset()});})();

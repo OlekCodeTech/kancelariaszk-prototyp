@@ -209,7 +209,11 @@ p+p{margin-top:14px}
 .side-nav a span{font-family:var(--serif);color:var(--rose)}
 .side-nav a:hover,.side-nav a.on{color:var(--main);font-weight:600}
 /* zespół */
-.mems{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 28px}
+/* karty wyrównane wierszami (subgrid): zdjęcie / imię / stanowisko / biogram – zawsze na tej samej wysokości */
+.mems{display:grid;grid-template-columns:repeat(4,1fr);column-gap:28px;row-gap:0}
+.mem{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;align-content:start}
+.mem h3{align-self:end}
+.mem-b{padding-bottom:52px}
 .mem-ph{margin-bottom:22px;border:1px solid var(--line);padding:8px;background:#fff}
 .mem-ph img,.mono{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top}
 .mono{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--paper2)}
@@ -218,7 +222,7 @@ p+p{margin-top:14px}
 .mem h3{font-size:21px;margin-bottom:4px}
 .role{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:14px;line-height:1.5}
 .bio p{font-size:14.5px;color:var(--muted);line-height:1.65}
-.bio.clamp{max-height:190px;overflow:hidden;-webkit-mask:linear-gradient(#000 55%,transparent)}
+.bio.clamp{max-height:182px;overflow:hidden;-webkit-mask:linear-gradient(#000 55%,transparent)}
 .bio.open{max-height:none;-webkit-mask:none}
 .more-b{background:none;border:0;border-bottom:1px solid var(--pale);color:var(--main);font:inherit;font-weight:600;font-size:12px;
   letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-top:12px;padding-bottom:3px}
@@ -308,5 +312,4 @@ p+p{margin-top:14px}
   .ct-list dd,.ct-list dd a{font-size:21px}
   .form{padding:28px 20px}
   .cta-frame{padding:44px 22px}
-  .mems{gap:48px}
 }
